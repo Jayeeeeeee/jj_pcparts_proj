@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "232668855467",
+    "project_id": "jjpcparts",
+    "storage_bucket": "jjpcparts.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:232668855467:android:a67494aa15d83853d18bee",
+        "android_client_info": {
+          "package_name": "com.example.jj_pcparts_proj"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8IUuxE2K6R99i37Ph7UgxF3gPNm7A-HY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

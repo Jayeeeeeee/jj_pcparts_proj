@@ -1,0 +1,219 @@
+import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:jj_pcparts_proj/models/products.dart';
+import 'dart:html' as html;
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+
+class AddCategory extends StatefulWidget {
+  const AddCategory({Key? key}) : super(key: key);
+
+  @override
+  State<AddCategory> createState() => _AddCategoryState();
+}
+
+class _AddCategoryState extends State<AddCategory> {
+  TextEditingController cnamecontroller = TextEditingController();
+  
+  late String errormessage;
+  late bool isError;
+  String imageUrl = '';
+
+  @override
+  void initState() {
+    errormessage = "This is an error";
+    isError = false;
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  Future<void> _pickImage() async {
+    try {
+      final html.FileUploadInputElement input = html.FileUploadInputElement()
+        ..click();
+      input.onChange.listen((event) async {
+        final files = input.files;
+        if (files!.isNotEmpty) {
+          final file = files.first;
+          final reader = html.FileReader();
+          reader.readAsDataUrl(file);
+
+          reader.onLoadEnd.listen((loadEndEvent) async {
+            // Display the picked image
+            setState(() {
+              imageUrl = reader.result as String;
+            });
+          });
+        }
+      });
+
+      // Trigger the file dialog
+      input.click();
+    } catch (error) {
+      print("Error picking image: $error");
+    }
+  }
+
+  Future<void> _uploadImage(html.File file) async {
+    try {
+      final storageRef = firebase_storage.FirebaseStorage.instance
+          .ref()
+          .child('category_images')
+          .child('${DateTime.now().millisecondsSinceEpoch}.jpg');
+
+      final uploadTask = storageRef.putBlob(file);
+      await uploadTask.whenComplete(() async {
+        imageUrl = await storageRef.getDownloadURL();
+      });
+    } catch (error) {
+      print("Error uploading image: $error");
+    }
+  }
+
+  Future<void> createCategory() async {
+    if (imageUrl.isEmpty) {
+      setState(() {
+        errormessage = "Please select an image before saving the Category.";
+        isError = true;
+      });
+      return;
+    }
+
+    try {
+      final docCategory = FirebaseFirestore.instance.collection('Category').doc();
+      final newCategory = Category(
+        id: docCategory.id,
+        imageUrl: imageUrl,
+        rating: ratingcontroller.text,
+        pname: pnamecontroller.text,
+        pprice: ppricecontroller.text,
+        pdescription: pdescriptioncontroller.text,
+      );
+
+      final json = newCategory.toJson();
+      await docCategory.set(json);
+
+      setState(() {
+        pnamecontroller.text = "";
+        ppricecontroller.text = "";
+        pdescriptioncontroller.text = "";
+        imageUrl = "";
+        Navigator.pop(context);
+      });
+    } catch (error) {
+      setState(() {
+        isError = true;
+        errormessage = "Error creating the Category. Please try again.";
+      });
+    }
+  }
+
+  var errortxtstyle = const TextStyle(
+    fontWeight: FontWeight.bold,
+    color: Colors.red,
+    letterSpacing: 1,
+    fontSize: 18,
+  );
+  var txtstyle = const TextStyle(
+    fontWeight: FontWeight.bold,
+    letterSpacing: 2,
+    fontSize: 38,
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Go Back'),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_back),
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 25),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'ADD DATA',
+                  style: txtstyle,
+                ),
+                const SizedBox(height: 15),
+                ElevatedButton(
+                  onPressed: _pickImage,
+                  child: const Text('Pick Image'),
+                ),
+                const SizedBox(height: 15),
+                imageUrl.isNotEmpty
+                    ? Image.network(
+                        imageUrl,
+                        height: 100,
+                      )
+                    : Container(),
+                const SizedBox(height: 15),
+                TextField(
+                  controller: pnamecontroller,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Enter Category name',
+                    prefixIcon: Icon(Icons.person),
+                  ),
+                ),
+                const SizedBox(height: 15),
+                TextField(
+                  controller: ppricecontroller,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Enter Price',
+                    prefixIcon: Icon(Icons.email),
+                  ),
+                ),
+                const SizedBox(height: 15),
+                TextField(
+                  controller: pdescriptioncontroller,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Enter Description',
+                    prefixIcon: Icon(Icons.email),
+                  ),
+                ),
+                const SizedBox(height: 15),
+                TextField(
+                  controller: ratingcontroller,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Enter Rating',
+                    prefixIcon: Icon(Icons.email),
+                  ),
+                ),
+                const SizedBox(height: 15),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: const Size.fromHeight(50),
+                  ),
+                  onPressed: createCategory,
+                  child: const Text('SAVE'),
+                ),
+                const SizedBox(height: 15),
+                isError
+                    ? Text(
+                        errormessage,
+                        style: errortxtstyle,
+                      )
+                    : Container(),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
