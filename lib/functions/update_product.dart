@@ -135,7 +135,7 @@ class _UpdateProductState extends State<UpdateProduct> {
                   controller: pnameController,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'Enter product name',
+                    labelText: 'Enter Product Name',
                     prefixIcon:
                         Icon(Icons.person_2_outlined, color: JJColors.primary),
                   ),
@@ -166,7 +166,7 @@ class _UpdateProductState extends State<UpdateProduct> {
                   controller: ratingController,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'Enter rating',
+                    labelText: 'Enter Rating',
                     prefixIcon: Icon(Icons.star, color: JJColors.primary),
                   ),
                 ),
