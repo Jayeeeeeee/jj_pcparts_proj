@@ -3,6 +3,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:jj_pcparts_proj/utils/constants/colors.dart';
+import 'package:jj_pcparts_proj/utils/constants/image_strings.dart';
+import 'package:jj_pcparts_proj/utils/constants/sizes.dart';
+import 'package:jj_pcparts_proj/utils/constants/text_strings.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -55,7 +58,7 @@ class _LoginState extends State<Login> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      'lib/images/op-logo-1.png',
+                      JJImages.appLogo,
                       height: 150,
                     ),
                   ],
@@ -70,21 +73,21 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 const SizedBox(height: 40),
-                TextField(
+                TextFormField(
                   controller: usernamecontroller,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'Username/Email',
+                    labelText: JJTexts.username,
                     prefixIcon: Icon(Icons.person_3_outlined),
                   ),
                 ),
                 const SizedBox(height: 15),
-                TextField(
+                TextFormField(
                   obscureText: true,
                   controller: passwordcontroller,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'Password',
+                    labelText: JJTexts.password,
                     prefixIcon: Icon(Icons.lock_outline),
                   ),
                 ),
@@ -99,24 +102,27 @@ class _LoginState extends State<Login> {
                         usernamecontroller.text, passwordcontroller.text);
                   },
                   child: const Text(
-                    'LOGIN',
+                    JJTexts.login,
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
-                const SizedBox(height: 25),
-                GestureDetector(
-                  onTap: () {
-                    // Navigate to the Register page
+                const SizedBox(
+                  height: JJSizes.spaceBtwSections,
+                ),
+                ElevatedButton(
+                  //
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: const Size.fromHeight(50),
+                    backgroundColor: JJColors.primary,
+                  ),
+                  onPressed: () {
                     Navigator.pushNamed(context, '/register');
                   },
                   child: const Text(
-                    "Don't have an account? Register here",
-                    style: TextStyle(
-                      color: Colors.blue,
-                      decoration: TextDecoration.underline,
-                    ),
+                    JJTexts.createAccount,
+                    style: TextStyle(color: Colors.white),
                   ),
-                ),
+                ), //
                 const SizedBox(height: 15),
                 (isError)
                     ? Text(errormessage, style: errortxtstyle)

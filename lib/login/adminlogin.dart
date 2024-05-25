@@ -125,7 +125,7 @@ class _AdminLoginState extends State<AdminLogin> {
   Future checkLogin(username, password) async {
     try {
       final adminSnapshot = await FirebaseFirestore.instance
-          .collection('Admin')
+          .collection('admin')
           .where('email', isEqualTo: username)
           .where('password', isEqualTo: password)
           .get();

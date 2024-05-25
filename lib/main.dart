@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
       home: const Login(),
       routes: {
         'order_summary': (context) => OrderSummaryPage(),
-        '/customerview': (context) => CustomerView(),
+        '/customerview': (context) => const CustomerView(),
         '/cart': (context) => const Cart(),
         '/customer_order': (context) => const CustomerOrder(),
         '/register': (context) => const Register(),

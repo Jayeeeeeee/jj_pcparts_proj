@@ -208,19 +208,19 @@ class _CustomerViewState extends State<CustomerView> {
           children: <Widget>[
             DrawerHeader(
               decoration: const BoxDecoration(
-                color: JJColors.primary,
+                color: JJColors.white,
               ),
               child: Row(
                 children: [
                   const Icon(
                     Icons.person_4_outlined,
-                    color: Colors.white,
+                    color: JJColors.black,
                     size: 40,
                   ),
                   Text(
                     user.email!,
                     style: const TextStyle(
-                      color: Colors.white,
+                      color: JJColors.black,
                       fontSize: 20,
                     ),
                   ),

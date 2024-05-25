@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jj_pcparts_proj/components/catergory.dart';
 
-import 'package:jj_pcparts_proj/components/pantstile.dart';
+import 'package:jj_pcparts_proj/components/product_tile.dart';
 
 import 'package:jj_pcparts_proj/models/shop.dart';
 import 'package:jj_pcparts_proj/pages/product_details_page.dart';
