@@ -338,7 +338,7 @@ class _CustomerViewState extends State<CustomerView> {
 Future<List<Product>> fetchProducts() async {
   final response = await FirebaseFirestore.instance.collection('Product').get();
   return response.docs
-      .map((doc) => Product.fromJson(doc.data() as Map<String, dynamic>))
+      .map((doc) => Product.fromJson(doc.data()))
       .toList();
 }
 

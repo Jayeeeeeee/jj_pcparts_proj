@@ -5,7 +5,7 @@ import 'package:jj_pcparts_proj/login/authenticator.dart';
 import 'package:jj_pcparts_proj/utils/constants/colors.dart';
 
 class Register extends StatefulWidget {
-  const Register({Key? key});
+  const Register({super.key});
 
   @override
   State<Register> createState() => _RegisterState();

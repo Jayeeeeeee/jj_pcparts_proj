@@ -3,7 +3,7 @@
 /// This class contains all the App Images in String formats.
 class JJImages {
   // -- App Logos
-  static const String appLogo = "assets/logos/jjpcparts_applogo";
+  static const String appLogo = "./assets/icons/jjpcparts_applogo.png";
 
   // -- Category Icons
   static const String motherBoardIcon =

@@ -4,6 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'complete_order.dart';
 
 class OrderSummaryPage extends StatefulWidget {
+  const OrderSummaryPage({super.key});
+
   @override
   _OrderSummaryPageState createState() => _OrderSummaryPageState();
 }
@@ -60,7 +62,7 @@ class _OrderSummaryPageState extends State<OrderSummaryPage> {
     showDialog(
       context: context,
       builder: (context) {
-        Set<String> uniqueProductNames = Set<String>();
+        Set<String> uniqueProductNames = <String>{};
 
         return AlertDialog(
           title: const Center(
@@ -171,7 +173,7 @@ class OrderSummaryList extends StatelessWidget {
   final void Function(QueryDocumentSnapshot?) onMoveToCheck;
   final void Function(QueryDocumentSnapshot?) showDetailsDialog;
 
-  OrderSummaryList({
+  const OrderSummaryList({super.key, 
     required this.onCompleteOrder,
     required this.onMoveToCheck,
     required this.showDetailsDialog,
@@ -197,7 +199,7 @@ class OrderSummaryList extends StatelessWidget {
             return ListTile(
               title: Row(
                 children: [
-                  Icon(Icons.person, color: Colors.blue),
+                  const Icon(Icons.person, color: Colors.blue),
                   const SizedBox(width: 8),
                   Text(
                     ' ${order?['fname']}',
@@ -210,7 +212,7 @@ class OrderSummaryList extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   IconButton(
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.remove_red_eye_outlined,
                       color: Colors.blue,
                     ),

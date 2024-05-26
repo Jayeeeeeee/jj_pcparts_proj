@@ -5,6 +5,8 @@ import 'package:jj_pcparts_proj/functions/update_data.dart';
 import 'package:jj_pcparts_proj/login/user.dart';
 
 class AllData extends StatefulWidget {
+  const AllData({super.key});
+
   @override
   State<AllData> createState() => _AllDataState();
 }

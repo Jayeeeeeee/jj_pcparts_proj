@@ -22,7 +22,7 @@ class _AuthenticatorState extends State<Authenticator> {
               child: Text('Something wrong'),
             );
           } else if (snapshot.hasData) {
-            return CustomerView();
+            return const CustomerView();
           } else {
             return const Login();
           }

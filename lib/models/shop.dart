@@ -40,7 +40,7 @@ class Shop extends ChangeNotifier {
   double calculateTotal() {
     double totalPrice = 0;
     for (var product in _cart) {
-      totalPrice += double.parse(product.pprice as String);
+      totalPrice += double.parse(product.pprice);
     }
     return totalPrice;
   }

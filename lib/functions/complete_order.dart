@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class CompleteOrderPage extends StatefulWidget {
   final List<QueryDocumentSnapshot?> orders;
 
-  CompleteOrderPage({required this.orders});
+  const CompleteOrderPage({super.key, required this.orders});
 
   @override
   _CompleteOrderPageState createState() => _CompleteOrderPageState();
@@ -25,7 +25,7 @@ class _CompleteOrderPageState extends State<CompleteOrderPage> {
         future: _getOrders(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           }
@@ -57,7 +57,7 @@ class _CompleteOrderPageState extends State<CompleteOrderPage> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       IconButton(
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.remove_red_eye_outlined,
                           color: Colors.blue,
                         ),
@@ -87,7 +87,7 @@ class _CompleteOrderPageState extends State<CompleteOrderPage> {
     showDialog(
       context: context,
       builder: (context) {
-        Set<String> uniqueProductNames = Set<String>();
+        Set<String> uniqueProductNames = <String>{};
 
         return AlertDialog(
           title: const Center(

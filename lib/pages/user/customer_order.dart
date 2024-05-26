@@ -8,7 +8,7 @@ import 'package:jj_pcparts_proj/utils/constants/colors.dart';
 import 'package:provider/provider.dart';
 
 class CustomerOrder extends StatefulWidget {
-  const CustomerOrder({Key? key});
+  const CustomerOrder({super.key});
 
   @override
   State<CustomerOrder> createState() => _CustomerOrderState();
@@ -63,7 +63,7 @@ class _CustomerOrderState extends State<CustomerOrder> {
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 25),
-                Container(
+                SizedBox(
                   height: 50,
                   child: TextField(
                     controller: fnamecontroller,
@@ -78,7 +78,7 @@ class _CustomerOrderState extends State<CustomerOrder> {
                   ),
                 ),
                 const SizedBox(height: 15),
-                Container(
+                SizedBox(
                   height: 50,
                   child: TextField(
                     controller: addresscontroller,
@@ -93,7 +93,7 @@ class _CustomerOrderState extends State<CustomerOrder> {
                   ),
                 ),
                 const SizedBox(height: 15),
-                Container(
+                SizedBox(
                   height: 50,
                   child: TextField(
                     controller: contactNumbercontroller,
@@ -108,7 +108,7 @@ class _CustomerOrderState extends State<CustomerOrder> {
                   ),
                 ),
                 const SizedBox(height: 15),
-                Container(
+                SizedBox(
                   height: 50,
                   child: TextField(
                     controller: messagecontroller,
@@ -141,7 +141,7 @@ class _CustomerOrderState extends State<CustomerOrder> {
                           ),
                           title: Text("${product.pname} x $quantity"),
                           subtitle: Text(
-                            "Price: PHP ${double.parse(product.pprice as String).toStringAsFixed(2)}",
+                            "Price: PHP ${double.parse(product.pprice).toStringAsFixed(2)}",
                             style: const TextStyle(fontWeight: FontWeight.bold),
                           ),
                         );

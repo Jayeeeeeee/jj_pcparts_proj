@@ -10,7 +10,7 @@ import 'package:jj_pcparts_proj/models/products.dart';
 import 'package:jj_pcparts_proj/utils/constants/colors.dart';
 
 class ProductData extends StatefulWidget {
-  const ProductData({Key? key});
+  const ProductData({super.key});
 
   @override
   State<ProductData> createState() => _ProductDataState();
@@ -77,9 +77,9 @@ class _ProductDataState extends State<ProductData> {
               deleteProduct: deleteProduct,
               navigateToUpdateProduct: navigateToUpdateProduct,
             ),
-            OrderSummaryPage(),
-            CompleteOrderPage(
-              orders: const [],
+            const OrderSummaryPage(),
+            const CompleteOrderPage(
+              orders: [],
             ),
           ],
         ),
@@ -104,6 +104,7 @@ class ProductDataTab extends StatelessWidget {
   final Function(Product) navigateToUpdateProduct;
 
   ProductDataTab({
+    super.key,
     required this.deleteProduct,
     required this.navigateToUpdateProduct,
   });

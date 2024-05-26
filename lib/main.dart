@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
       //scrollBehavior: MyCustomScrollBehavior(),
       home: const Login(),
       routes: {
-        'order_summary': (context) => OrderSummaryPage(),
+        'order_summary': (context) => const OrderSummaryPage(),
         '/customerview': (context) => const CustomerView(),
         '/cart': (context) => const Cart(),
         '/customer_order': (context) => const CustomerOrder(),

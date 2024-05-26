@@ -31,7 +31,7 @@ class _UpdateProductState extends State<UpdateProduct> {
     errormessage = "This is an error";
     isError = false;
     pnameController.text = widget.product.pname;
-    ppriceController.text = widget.product.pprice as String;
+    ppriceController.text = widget.product.pprice;
     pdescriptionController.text = widget.product.pdescription;
     ratingController.text = widget.product.rating;
     imageUrl = widget.product.imageUrl;

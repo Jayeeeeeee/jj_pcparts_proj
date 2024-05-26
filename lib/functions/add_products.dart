@@ -6,7 +6,7 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:jj_pcparts_proj/utils/constants/colors.dart';
 
 class AddProduct extends StatefulWidget {
-  const AddProduct({Key? key}) : super(key: key);
+  const AddProduct({super.key});
 
   @override
   State<AddProduct> createState() => _AddProductState();
