@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flutter/material.dart';
 import 'package:jj_pcparts_proj/utils/constants/colors.dart';
+import 'package:jj_pcparts_proj/utils/constants/image_strings.dart';
 
 class AdminLogin extends StatefulWidget {
   const AdminLogin({super.key});
@@ -54,7 +55,7 @@ class _AdminLoginState extends State<AdminLogin> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      'lib/images/op-logo-1.png',
+                      JJImages.appLogo,
                       height: 150,
                     ),
                   ],
@@ -98,7 +99,7 @@ class _AdminLoginState extends State<AdminLogin> {
                         usernameController.text, passwordController.text);
                   },
                   child: const Text(
-                    'LOGIN',
+                    'Login',
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
@@ -135,13 +136,13 @@ class _AdminLoginState extends State<AdminLogin> {
         Navigator.pushReplacementNamed(context, '/admin_view');
       } else {
         setState(() {
-          errorMessage = "Invalid username or password";
+          errorMessage = "Invalid Username or Password";
           isError = true;
         });
       }
     } catch (e) {
       setState(() {
-        errorMessage = "An error occurred";
+        errorMessage = '$e';
         isError = true;
       });
     }

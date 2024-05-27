@@ -44,7 +44,7 @@ class _MenuPageState extends State<MenuPage> {
         foregroundColor: Colors.white,
         elevation: 0,
         leading: const Icon(Icons.menu),
-        title: const Text('OnlyPants'),
+        title: const Text('JJ PC Parts'),
         actions: [
           IconButton(
             onPressed: () {

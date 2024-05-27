@@ -39,7 +39,7 @@ class _RegisterState extends State<Register> {
 
   @override
   void initState() {
-    errorMessage = "This is an error";
+    errorMessage = "There Is An Error.";
     isError = false;
     registrationSuccess = false;
     super.initState();
@@ -62,7 +62,7 @@ class _RegisterState extends State<Register> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
-                'Create an account',
+                'Create An Account',
                 style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
@@ -73,7 +73,7 @@ class _RegisterState extends State<Register> {
                 controller: nameController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'Enter name',
+                  labelText: 'Enter Name',
                   prefixIcon: Icon(Icons.person_3_outlined),
                 ),
               ),
@@ -92,7 +92,7 @@ class _RegisterState extends State<Register> {
                 controller: passwordController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'Enter password',
+                  labelText: 'Enter Password',
                   prefixIcon: Icon(Icons.lock_outline),
                 ),
               ),
@@ -108,18 +108,18 @@ class _RegisterState extends State<Register> {
                     registerUser();
                   } else {
                     // Show a message or take any action for incomplete fields
-                    showError("Fill all fields.");
+                    showError("Fill All Fields.");
                   }
                 },
                 child: const Text(
-                  'REGISTER',
+                  'Register',
                   style: TextStyle(color: Colors.white),
                 ),
               ),
               const SizedBox(height: 15),
               registrationSuccess
                   ? const Text(
-                      "Account successfully created!",
+                      "Account Successfully Created!",
                       style: TextStyle(
                         color: Colors.green,
                         fontSize: 16,
@@ -133,7 +133,7 @@ class _RegisterState extends State<Register> {
                   Navigator.pushReplacementNamed(context, '/login');
                 },
                 child: const Text(
-                  "Already have an account? Login",
+                  "Already Have An Account? Login",
                   style: TextStyle(
                     color: Colors.blue,
                     decoration: TextDecoration.underline,

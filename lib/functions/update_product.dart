@@ -86,7 +86,11 @@ class _UpdateProductState extends State<UpdateProduct> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Update Product'),
+        backgroundColor: JJColors.white,
+        title: const Text(
+          'Update Product',
+          style: TextStyle(color: JJColors.black),
+        ),
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
@@ -105,6 +109,8 @@ class _UpdateProductState extends State<UpdateProduct> {
 
                 // const SizedBox(height: 15),
                 Container(
+                  height: 50,
+                  width: 150,
                   decoration: BoxDecoration(
                     color: JJColors.primary, // Set the color to purple
                     borderRadius: BorderRadius.circular(10),
@@ -127,7 +133,8 @@ class _UpdateProductState extends State<UpdateProduct> {
                 imageUrl.isNotEmpty
                     ? Image.network(
                         imageUrl,
-                        height: 100,
+                        width: 200,
+                        height: 200,
                       )
                     : Container(),
                 const SizedBox(height: 15),

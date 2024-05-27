@@ -41,8 +41,9 @@ class _ProductDataState extends State<ProductData> {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: JJColors.white,
           title: Text(
-            'Admin Panel',
+            'JJ PC Parts Admin Panel',
             style:
                 TextStyle(fontWeight: FontWeight.bold, color: Colors.grey[800]),
           ),
@@ -54,6 +55,7 @@ class _ProductDataState extends State<ProductData> {
               onPressed: () {
                 _signOut();
               },
+              color: JJColors.black,
             ),
           ],
           bottom: const TabBar(

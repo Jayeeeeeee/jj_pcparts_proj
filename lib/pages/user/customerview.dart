@@ -4,12 +4,29 @@ import 'package:flutter/material.dart';
 import 'package:jj_pcparts_proj/models/products.dart';
 import 'package:jj_pcparts_proj/utils/constants/colors.dart';
 import 'package:jj_pcparts_proj/pages/user/product_details.dart';
+import 'package:jj_pcparts_proj/utils/constants/image_strings.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class CustomerView extends StatefulWidget {
   const CustomerView({super.key});
 
   @override
   _CustomerViewState createState() => _CustomerViewState();
+}
+
+class CustomIcon extends StatelessWidget {
+  final String imagePath;
+  final double size;
+
+  const CustomIcon({super.key, required this.imagePath, required this.size});
+
+  @override
+  Widget build(BuildContext context) {
+    return ImageIcon(
+      AssetImage(imagePath),
+      size: size,
+    );
+  }
 }
 
 class _CustomerViewState extends State<CustomerView> {
@@ -135,7 +152,7 @@ class _CustomerViewState extends State<CustomerView> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'lib/images/op-logo-1.png',
+                JJImages.appLogo,
                 height: 50,
               ),
               const SizedBox(width: 5),
@@ -267,24 +284,40 @@ class _CustomerViewState extends State<CustomerView> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    buildCategory("Men", Icons.face, () {
+                    buildCategory("Peripherals", Icons.keyboard, () {
                       final menProducts = filteredProducts
                           ?.where((product) =>
-                              product.pcategory.toLowerCase() == 'men')
+                              product.pcategory.toLowerCase() == 'peripherals')
                           .toList();
                       navigateToCategoryPage(menProducts!);
                     }),
-                    buildCategory("Women", Icons.face_3, () {
+                    buildCategory("Monitor", Icons.monitor_rounded, () {
                       final womenProducts = filteredProducts
                           ?.where((product) =>
-                              product.pcategory.toLowerCase() == 'women')
+                              product.pcategory.toLowerCase() == 'monitor')
                           .toList();
                       navigateToCategoryPage(womenProducts!);
                     }),
-                    buildCategory("Unisex", Icons.people, () {
+                    buildCategory("PC Case", Icons.devices_other, () {
                       final unisexProducts = filteredProducts
                           ?.where((product) =>
-                              product.pcategory.toLowerCase() == 'unisex')
+                              product.pcategory.toLowerCase() == 'pc case')
+                          .toList();
+                      navigateToCategoryPage(unisexProducts!);
+                    }),
+                    buildCategory("Graphics Card", Icons.graphic_eq, () {
+                      final unisexProducts = filteredProducts
+                          ?.where((product) =>
+                              product.pcategory.toLowerCase() ==
+                              'graphics card')
+                          .toList();
+                      navigateToCategoryPage(unisexProducts!);
+                    }),
+                    buildCategory("Power Supply Unit", Icons.power, () {
+                      final unisexProducts = filteredProducts
+                          ?.where((product) =>
+                              product.pcategory.toLowerCase() ==
+                              'power supply unit')
                           .toList();
                       navigateToCategoryPage(unisexProducts!);
                     }),
@@ -337,9 +370,7 @@ class _CustomerViewState extends State<CustomerView> {
 
 Future<List<Product>> fetchProducts() async {
   final response = await FirebaseFirestore.instance.collection('Product').get();
-  return response.docs
-      .map((doc) => Product.fromJson(doc.data()))
-      .toList();
+  return response.docs.map((doc) => Product.fromJson(doc.data())).toList();
 }
 
 class CategoryPage extends StatelessWidget {
@@ -393,7 +424,8 @@ class CategoryPage extends StatelessWidget {
                               Text(
                                 product.pname,
                                 style: const TextStyle(
-                                    fontWeight: FontWeight.bold),
+                                    fontWeight: FontWeight.bold,
+                                    color: JJColors.black),
                               ),
                               Row(
                                 children: [

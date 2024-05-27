@@ -108,7 +108,7 @@ class _AddProductState extends State<AddProduct> {
     } catch (error) {
       setState(() {
         isError = true;
-        errormessage = "Error creating the product. Please try again.";
+        errormessage = "Error Creating The Product. Please Try Again.";
       });
     }
   }
@@ -117,9 +117,11 @@ class _AddProductState extends State<AddProduct> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: JJColors.white,
         title: const Text(
           'Add Product',
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              fontSize: 16, fontWeight: FontWeight.bold, color: JJColors.black),
         ),
         leading: IconButton(
           onPressed: () {
@@ -180,8 +182,17 @@ class _AddProductState extends State<AddProduct> {
                           newValue; // Update categoryController.text
                     });
                   },
-                  items: <String>['', 'Men', 'Women', 'Unisex']
-                      .map<DropdownMenuItem<String>>((String value) {
+                  items: <String>[
+                    '',
+                    'Graphics Card',
+                    'Monitor',
+                    'Motherboard',
+                    'PC Case',
+                    'Peripherals',
+                    'Processors',
+                    'Power Supply',
+                    'Storage'
+                  ].map<DropdownMenuItem<String>>((String value) {
                     return DropdownMenuItem<String>(
                       value: value,
                       child: Text(value.isEmpty ? 'Select Category' : value),
@@ -198,7 +209,7 @@ class _AddProductState extends State<AddProduct> {
                   controller: pnamecontroller,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'Product name',
+                    labelText: 'Product Name',
                     prefixIcon:
                         Icon(Icons.person_3_outlined, color: JJColors.primary),
                   ),

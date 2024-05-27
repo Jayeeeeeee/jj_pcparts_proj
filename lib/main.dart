@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
         '/register': (context) => const Register(),
         '/login': (context) => const Login(),
         '/adminlogin': (context) => const AdminLogin(),
-        '/admin_view': (context) => const ProductData()
+        '/admin_view': (context) => const ProductData(),
       },
     );
   }

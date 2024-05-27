@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jj_pcparts_proj/components/button.dart';
 
 import 'package:jj_pcparts_proj/utils/constants/colors.dart';
+import 'package:jj_pcparts_proj/utils/constants/image_strings.dart';
 
 class IntroPage extends StatelessWidget {
   const IntroPage({super.key});
@@ -36,7 +37,7 @@ class IntroPage extends StatelessWidget {
             // Icon
             Padding(
               padding: const EdgeInsets.fromLTRB(150, 25, 150, 50),
-              child: Image.asset('lib/images/pants1.png'),
+              child: Image.asset(JJImages.appLogo),
             ),
             const SizedBox(
               height: 25,

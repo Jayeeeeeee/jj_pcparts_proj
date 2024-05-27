@@ -21,6 +21,7 @@ dependencies:
   firebase_auth: ^4.19.6
   firebase_storage: ^11.7.6
   flutter_native_splash: ^2.4.0
+  material_design_icons_flutter: ^7.0.7296
 
 dev_dependencies:
   flutter_test:
@@ -33,4 +34,13 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/
+    - assets/icons/jjpcparts_applogo.png
+    - assets/icons/motherboard.png
+    - assets/icons/case.png
+    - assets/icons/gpu-mining.png
+    - assets/icons/monitor.png
+    - assets/icons/mouse.png
+    - assets/icons/cpu.png
+    - assets/icons/psu.png
+    - assets/icons/ram.png
+    - assets/icons/ssd-drive.png
