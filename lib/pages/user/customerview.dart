@@ -5,7 +5,6 @@ import 'package:jj_pcparts_proj/models/products.dart';
 import 'package:jj_pcparts_proj/utils/constants/colors.dart';
 import 'package:jj_pcparts_proj/pages/user/product_details.dart';
 import 'package:jj_pcparts_proj/utils/constants/image_strings.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class CustomerView extends StatefulWidget {
   const CustomerView({super.key});
@@ -47,7 +46,7 @@ class _CustomerViewState extends State<CustomerView> {
           child: Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: JJColors.white,
               borderRadius: BorderRadius.circular(8),
               border: Border.all(color: Colors.grey),
             ),
@@ -69,7 +68,9 @@ class _CustomerViewState extends State<CustomerView> {
                         children: [
                           Text(
                             product.pname,
-                            style: const TextStyle(fontWeight: FontWeight.bold),
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: JJColors.black),
                           ),
                           Row(
                             children: [
@@ -82,7 +83,7 @@ class _CustomerViewState extends State<CustomerView> {
                               Text(
                                 product.rating,
                                 style: const TextStyle(
-                                  color: Colors.grey,
+                                  color: JJColors.black,
                                   fontSize: 14,
                                 ),
                               ),
@@ -91,7 +92,10 @@ class _CustomerViewState extends State<CustomerView> {
                         ],
                       ),
                       const SizedBox(height: 8),
-                      Text('₱ ${product.pprice}'),
+                      Text(
+                        '₱ ${product.pprice}',
+                        style: const TextStyle(color: JJColors.black),
+                      ),
                     ],
                   ),
                 ),
@@ -109,15 +113,14 @@ class _CustomerViewState extends State<CustomerView> {
         width: 67,
         height: 67,
         margin: const EdgeInsets.all(18),
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           shape: BoxShape.circle,
-          color: Colors.grey[300],
+          color: JJColors.grey,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(iconData,
-                color: const Color.fromARGB(255, 62, 62, 62), size: 30),
+            Icon(iconData, color: JJColors.black),
           ],
         ),
       ),
@@ -159,7 +162,7 @@ class _CustomerViewState extends State<CustomerView> {
               const Text(
                 'JJ PC Parts',
                 style: TextStyle(
-                    color: Colors.white,
+                    color: JJColors.white,
                     fontWeight: FontWeight.bold,
                     fontSize: 15),
               ),
@@ -171,7 +174,7 @@ class _CustomerViewState extends State<CustomerView> {
             onPressed: () {
               Navigator.pushNamed(context, '/cart');
             },
-            icon: const Icon(Icons.shopping_cart, color: Colors.white),
+            icon: const Icon(Icons.shopping_cart, color: JJColors.white),
           ),
         ],
         automaticallyImplyLeading: false,
@@ -186,7 +189,7 @@ class _CustomerViewState extends State<CustomerView> {
                   controller: _searchController,
                   decoration: InputDecoration(
                     hintText: 'Search Product',
-                    hintStyle: TextStyle(color: Colors.grey[500]),
+                    hintStyle: const TextStyle(color: JJColors.darkerGrey),
                     border: OutlineInputBorder(
                       borderSide: const BorderSide(width: 2.0),
                       borderRadius: BorderRadius.circular(8.0),
@@ -209,7 +212,7 @@ class _CustomerViewState extends State<CustomerView> {
                 const Text(
                   'Categories',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: JJColors.white,
                     fontSize: 17,
                     fontWeight: FontWeight.bold,
                   ),
@@ -232,13 +235,13 @@ class _CustomerViewState extends State<CustomerView> {
                   const Icon(
                     Icons.person_4_outlined,
                     color: JJColors.black,
-                    size: 40,
+                    size: 30,
                   ),
                   Text(
                     user.email!,
                     style: const TextStyle(
                       color: JJColors.black,
-                      fontSize: 20,
+                      fontSize: 15,
                     ),
                   ),
                 ],
@@ -274,9 +277,8 @@ class _CustomerViewState extends State<CustomerView> {
             final products = snapshot.data;
 
             final filteredProducts = products
-                ?.where((p) => p.pname
-                    .toLowerCase()
-                    .contains(_searchController.text.toLowerCase()))
+                ?.where((p) =>
+                    p.pname.toLowerCase().contains(_searchController.text))
                 .toList();
 
             return Column(
@@ -285,52 +287,48 @@ class _CustomerViewState extends State<CustomerView> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     buildCategory("Peripherals", Icons.keyboard, () {
-                      final menProducts = filteredProducts
-                          ?.where((product) =>
-                              product.pcategory.toLowerCase() == 'peripherals')
+                      final peripherals = filteredProducts
+                          ?.where(
+                              (product) => product.pcategory == 'Peripherals')
                           .toList();
-                      navigateToCategoryPage(menProducts!);
+                      navigateToCategoryPage(peripherals!);
                     }),
                     buildCategory("Monitor", Icons.monitor_rounded, () {
-                      final womenProducts = filteredProducts
-                          ?.where((product) =>
-                              product.pcategory.toLowerCase() == 'monitor')
+                      final monitor = filteredProducts
+                          ?.where((product) => product.pcategory == 'Monitor')
                           .toList();
-                      navigateToCategoryPage(womenProducts!);
+                      navigateToCategoryPage(monitor!);
                     }),
                     buildCategory("PC Case", Icons.devices_other, () {
-                      final unisexProducts = filteredProducts
-                          ?.where((product) =>
-                              product.pcategory.toLowerCase() == 'pc case')
+                      final pcCase = filteredProducts
+                          ?.where((product) => product.pcategory == 'PC Case')
                           .toList();
-                      navigateToCategoryPage(unisexProducts!);
+                      navigateToCategoryPage(pcCase!);
                     }),
                     buildCategory("Graphics Card", Icons.graphic_eq, () {
-                      final unisexProducts = filteredProducts
-                          ?.where((product) =>
-                              product.pcategory.toLowerCase() ==
-                              'graphics card')
+                      final gpu = filteredProducts
+                          ?.where(
+                              (product) => product.pcategory == 'Graphics Card')
                           .toList();
-                      navigateToCategoryPage(unisexProducts!);
+                      navigateToCategoryPage(gpu!);
                     }),
                     buildCategory("Power Supply Unit", Icons.power, () {
-                      final unisexProducts = filteredProducts
+                      final psu = filteredProducts
                           ?.where((product) =>
-                              product.pcategory.toLowerCase() ==
-                              'power supply unit')
+                              product.pcategory == 'Power Supply Unit')
                           .toList();
-                      navigateToCategoryPage(unisexProducts!);
+                      navigateToCategoryPage(psu!);
                     }),
                   ],
                 ),
                 Expanded(
                   child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.only(
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(15),
                         topRight: Radius.circular(15),
                       ),
-                      color: Colors.grey[300],
+                      color: JJColors.grey,
                     ),
                     padding: const EdgeInsets.only(top: 16),
                     child: ListView.builder(
@@ -381,7 +379,9 @@ class CategoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: JJColors.white,
+      ),
       body: ListView.builder(
         itemCount: categoryProducts.length,
         itemBuilder: (context, index) {
@@ -401,7 +401,7 @@ class CategoryPage extends StatelessWidget {
               child: Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: JJColors.white,
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(color: JJColors.primary),
                 ),
@@ -438,7 +438,7 @@ class CategoryPage extends StatelessWidget {
                                   Text(
                                     product.rating,
                                     style: const TextStyle(
-                                      color: Colors.grey,
+                                      color: Colors.black,
                                       fontSize: 14,
                                     ),
                                   ),
@@ -447,7 +447,10 @@ class CategoryPage extends StatelessWidget {
                             ],
                           ),
                           const SizedBox(height: 8),
-                          Text('₱ ${product.pprice}'),
+                          Text(
+                            '₱ ${product.pprice}',
+                            style: const TextStyle(color: JJColors.black),
+                          ),
                         ],
                       ),
                     ),

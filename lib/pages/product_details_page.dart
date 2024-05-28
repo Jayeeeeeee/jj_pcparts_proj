@@ -56,7 +56,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
           backgroundColor: JJColors.primary,
           content: const Text(
             "Successfully added to cart",
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: JJColors.white),
             textAlign: TextAlign.center,
           ),
           actions: [
@@ -70,7 +70,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
               },
               icon: const Icon(
                 Icons.done,
-                color: Colors.white,
+                color: JJColors.white,
               ),
             )
           ],
@@ -85,11 +85,11 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        foregroundColor: Colors.grey[900],
+        foregroundColor: JJColors.white,
       ),
       body: Column(
         children: [
-          //ListView of Product Details
+          //List View of Product Details
           Expanded(
               child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -115,8 +115,8 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                     //Rating Number
                     Text(
                       widget.product.rating,
-                      style: TextStyle(
-                          color: Colors.grey[600], fontWeight: FontWeight.bold),
+                      style: const TextStyle(
+                          color: JJColors.grey, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
@@ -169,7 +169,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 children: [
                   Text("\$${widget.product.pprice}",
                       style: const TextStyle(
-                          color: Colors.white,
+                          color: JJColors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 18)),
 
@@ -182,7 +182,8 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                               color: JJColors.secondary,
                               shape: BoxShape.circle),
                           child: IconButton(
-                            icon: const Icon(Icons.remove, color: Colors.white),
+                            icon:
+                                const Icon(Icons.remove, color: JJColors.white),
                             onPressed: decrementQuantity,
                           )),
 
@@ -193,7 +194,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                           child: Text(
                             quantityCount.toString(),
                             style: const TextStyle(
-                                color: Colors.white,
+                                color: JJColors.white,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18),
                           ),
@@ -205,7 +206,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                               color: JJColors.secondary,
                               shape: BoxShape.circle),
                           child: IconButton(
-                            icon: const Icon(Icons.add, color: Colors.white),
+                            icon: const Icon(Icons.add, color: JJColors.white),
                             onPressed: incrementQuantity,
                           ))
                     ],

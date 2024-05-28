@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:jj_pcparts_proj/models/products.dart';
+import 'package:jj_pcparts_proj/utils/constants/colors.dart';
 
 class ProductTile extends StatelessWidget {
   final Product product;
@@ -17,7 +18,7 @@ class ProductTile extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.grey[100],
+          color: JJColors.white,
           borderRadius: BorderRadius.circular(15),
         ),
         margin: const EdgeInsets.only(
@@ -30,6 +31,7 @@ class ProductTile extends StatelessWidget {
           children: [
             Text(
               product.pname,
+              style: const TextStyle(color: JJColors.black),
             ),
 
             //price + rating
@@ -40,14 +42,14 @@ class ProductTile extends StatelessWidget {
                   children: [
                     //price
                     Text('\$${product.pprice}',
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Colors.grey[700])),
+                            color: JJColors.black)),
 
                     //rating
-                    Icon(
+                    const Icon(
                       Icons.star,
-                      color: Colors.yellow[800],
+                      color: JJColors.rating,
                     ),
                     Text(product.rating,
                         style: const TextStyle(color: Colors.grey))

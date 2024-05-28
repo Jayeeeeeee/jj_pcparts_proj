@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:jj_pcparts_proj/components/button.dart';
+import 'package:intl/intl.dart';
 
 import 'package:jj_pcparts_proj/models/products.dart';
 import 'package:jj_pcparts_proj/models/shop.dart';
 import 'package:jj_pcparts_proj/utils/constants/colors.dart';
-import 'package:jj_pcparts_proj/pages/user/customer_order.dart';
 import 'package:provider/provider.dart';
 
 class Cart extends StatelessWidget {
@@ -52,7 +52,7 @@ class Cart extends StatelessWidget {
               child: ListView.builder(
                   itemCount: value.cart.length,
                   itemBuilder: (context, index) {
-                    // get pants from the cart
+                    // get product from the cart
                     final Product product = value.cart[index];
 
                     //Display only one item for each unique product
@@ -61,10 +61,10 @@ class Cart extends StatelessWidget {
                       //get quantity
                       final int quantity = value.getQuantity(product);
 
-                      // get pants name
+                      // get product name
                       final String productName = product.pname;
 
-                      // get pants price
+                      // get product price
                       final String productPrice = product.pprice;
 
                       // return list tile
@@ -84,19 +84,19 @@ class Cart extends StatelessWidget {
                           title: Text(
                             "$productName x $quantity", // Display quantity
                             style: const TextStyle(
-                                color: Colors.white,
+                                color: JJColors.white,
                                 fontWeight: FontWeight.bold),
                           ),
                           subtitle: Text(
-                            "PHP  ${double.parse(productPrice).toStringAsFixed(2)} ",
-                            style: TextStyle(
-                                color: Colors.grey[200],
+                            "₱  ${double.parse(productPrice).toStringAsFixed(2)} ",
+                            style: const TextStyle(
+                                color: JJColors.lightGrey,
                                 fontWeight: FontWeight.bold),
                           ),
                           trailing: IconButton(
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.delete,
-                              color: Colors.grey[300],
+                              color: JJColors.grey,
                             ),
                             onPressed: () => removeFromCart(product, context),
                           ),
@@ -117,7 +117,7 @@ class Cart extends StatelessWidget {
                     BoxDecoration(borderRadius: BorderRadius.circular(8)),
                 padding: const EdgeInsets.all(24),
                 child: Text(
-                  "TOTAL: PHP ${double.parse(value.calculateTotal().toString()).toStringAsFixed(2)}",
+                  "TOTAL: ₱ ${double.parse(value.calculateTotal().toString()).toStringAsFixed(2)}",
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
@@ -129,21 +129,17 @@ class Cart extends StatelessWidget {
                 ? Padding(
                     padding: const EdgeInsets.all(25.0),
                     child: MyButton(
-                      text: "BUY NOW",
+                      text: "Buy Now",
                       onTap: () {}, // Disabled button
                     ),
                   )
                 : Padding(
                     padding: const EdgeInsets.all(25.0),
                     child: MyButton(
-                      text: "BUY NOW",
+                      text: "Buy Now",
                       onTap: () {
                         // Navigate to the customer_page
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const CustomerOrder()),
-                        );
+                        Navigator.pushNamed(context, '/customer_order');
 
                         MyButton.changeButtonColor(JJColors.primary);
                       },

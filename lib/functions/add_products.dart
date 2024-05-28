@@ -155,14 +155,15 @@ class _AddProductState extends State<AddProduct> {
                         onPressed: _pickImage,
                         icon: const Icon(
                           Icons.camera_alt,
-                          color: Colors.white,
+                          color: JJColors.white,
                         ),
                         label: const Text(
                           'Pick Image',
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: JJColors.white),
                         ),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: JJColors.primaryBackground,
+                          backgroundColor: JJColors.primary,
+                          minimumSize: const Size(150, 50),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -258,7 +259,7 @@ class _AddProductState extends State<AddProduct> {
                     child: const Text(
                       'Create Product',
                       style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
+                          color: JJColors.white, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),

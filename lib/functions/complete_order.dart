@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:intl/intl.dart';
 
 class CompleteOrderPage extends StatefulWidget {
   final List<QueryDocumentSnapshot?> orders;
@@ -150,7 +151,7 @@ class _CompleteOrderPageState extends State<CompleteOrderPage> {
               if (order?['totalprice'] != null)
                 Center(
                   child: Text(
-                    'Total Amount: PHP ${order?['totalprice']}',
+                    'Total Amount: ₱ ${order?['totalprice']}',
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),

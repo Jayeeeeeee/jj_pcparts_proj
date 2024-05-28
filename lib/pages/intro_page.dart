@@ -25,7 +25,7 @@ class IntroPage extends StatelessWidget {
             const Text(
               "JJ PC Parts",
               style: TextStyle(
-                color: Colors.white,
+                color: JJColors.white,
                 fontSize: 28,
                 fontFamily: 'DM Serif Display',
               ),
@@ -46,7 +46,7 @@ class IntroPage extends StatelessWidget {
             const Text(
               "The Best and Affordable PC Parts You will ever find!",
               style: TextStyle(
-                  color: Colors.white,
+                  color: JJColors.white,
                   fontSize: 25,
                   fontFamily: 'DM Serif Display'),
             ),

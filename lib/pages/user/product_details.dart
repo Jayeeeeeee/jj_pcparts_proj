@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:jj_pcparts_proj/components/button.dart';
 import 'package:jj_pcparts_proj/models/products.dart';
 import 'package:jj_pcparts_proj/models/shop.dart';
 import 'package:jj_pcparts_proj/utils/constants/colors.dart';
+import 'package:jj_pcparts_proj/utils/constants/sizes.dart';
 import 'package:provider/provider.dart';
 
 class ProductDetails extends StatefulWidget {
@@ -49,7 +51,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   backgroundColor: JJColors.primary,
                   content: const Text(
                     "Successfully added to cart",
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: JJColors.white),
                     textAlign: TextAlign.center,
                   ),
                   actions: [
@@ -59,7 +61,7 @@ class _ProductDetailsState extends State<ProductDetails> {
 
                           Navigator.pop(context);
                         },
-                        icon: const Icon(Icons.done, color: Colors.white))
+                        icon: const Icon(Icons.done, color: JJColors.white))
                   ]));
     }
   }
@@ -67,7 +69,9 @@ class _ProductDetailsState extends State<ProductDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          backgroundColor: JJColors.white,
+        ),
         body: Column(
           children: [
             Expanded(
@@ -75,6 +79,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: ListView(
                   children: [
+                    const SizedBox(
+                      height: JJSizes.spaceBtwSections,
+                    ),
                     Image.network(
                       widget.product.imageUrl,
                       height: 200,
@@ -82,9 +89,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ),
                     Row(
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.star,
-                          color: Colors.yellow[800],
+                          color: JJColors.rating,
                         ),
                         const SizedBox(
                           width: 10,
@@ -100,17 +107,20 @@ class _ProductDetailsState extends State<ProductDetails> {
                     const SizedBox(
                       height: 10,
                     ),
-                    Text("Description",
+                    const SizedBox(
+                      height: JJSizes.spaceBtwSections,
+                    ),
+                    const Text("Description",
                         style: TextStyle(
-                          color: Colors.grey[900],
+                          color: JJColors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 18,
                         )),
-                    const SizedBox(height: 15),
+                    const SizedBox(height: 5),
                     Text(
                       widget.product.pdescription,
-                      style: TextStyle(
-                        color: Colors.grey[600],
+                      style: const TextStyle(
+                        color: JJColors.white,
                         fontSize: 14,
                         height: 2,
                       ),
@@ -128,9 +138,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "PHP ${widget.product.pprice}",
+                          "₱ ${widget.product.pprice}",
                           style: const TextStyle(
-                              color: Colors.white,
+                              color: JJColors.white,
                               fontWeight: FontWeight.bold,
                               fontSize: 18),
                         ),
@@ -143,7 +153,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                               ),
                               child: IconButton(
                                 icon: const Icon(Icons.remove,
-                                    color: Colors.white),
+                                    color: JJColors.white),
                                 onPressed: decrementQuantity,
                               ),
                             ),
@@ -153,7 +163,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                                 child: Text(
                                   quantityCount.toString(),
                                   style: const TextStyle(
-                                      color: Colors.white,
+                                      color: JJColors.white,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 18),
                                 ),
@@ -165,8 +175,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                                 shape: BoxShape.circle,
                               ),
                               child: IconButton(
-                                icon:
-                                    const Icon(Icons.add, color: Colors.white),
+                                icon: const Icon(Icons.add,
+                                    color: JJColors.white),
                                 onPressed: incrementQuantity,
                               ),
                             )

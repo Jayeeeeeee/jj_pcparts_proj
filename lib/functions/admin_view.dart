@@ -190,13 +190,13 @@ class ProductDataTab extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.add,
-                    color: Colors.white,
+                    color: JJColors.white,
                   ),
                   SizedBox(width: 8.0),
                   Text(
                     'Add Product',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: JJColors.white,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

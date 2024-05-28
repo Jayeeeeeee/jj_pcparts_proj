@@ -71,21 +71,21 @@ class CartPage extends StatelessWidget {
                             title: Text(
                               productName,
                               style: const TextStyle(
-                                color: Colors.white,
+                                color: JJColors.white,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                             subtitle: Text(
                               productPrice,
-                              style: TextStyle(
-                                color: Colors.grey[200],
+                              style: const TextStyle(
+                                color: JJColors.grey,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                             trailing: IconButton(
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.delete,
-                                color: Colors.grey[300],
+                                color: JJColors.grey,
                               ),
                               onPressed: () => removeFromCart(product, context),
                             ),

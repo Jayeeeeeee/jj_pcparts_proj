@@ -103,7 +103,7 @@ class _LoginState extends State<Login> {
                   },
                   child: const Text(
                     JJTexts.login,
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: JJColors.white),
                   ),
                 ),
                 const SizedBox(
@@ -120,7 +120,7 @@ class _LoginState extends State<Login> {
                   },
                   child: const Text(
                     JJTexts.createAccount,
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: JJColors.white),
                   ),
                 ), //
                 const SizedBox(height: 15),

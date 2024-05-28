@@ -57,5 +57,5 @@ class MyApp extends StatelessWidget {
 // home: const Scaffold(
 // backgroundColor: JJColors.primary,
 // body: Center(
-// child: CircularProgressIndicator(color: Colors.white),
+// child: CircularProgressIndicator(color: JJColors.white),
 //  ),

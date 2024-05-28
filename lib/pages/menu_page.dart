@@ -41,7 +41,7 @@ class _MenuPageState extends State<MenuPage> {
       backgroundColor: JJColors.primary,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        foregroundColor: Colors.white,
+        foregroundColor: JJColors.white,
         elevation: 0,
         leading: const Icon(Icons.menu),
         title: const Text('JJ PC Parts'),

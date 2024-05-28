@@ -100,7 +100,7 @@ class _AdminLoginState extends State<AdminLogin> {
                   },
                   child: const Text(
                     'Login',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: JJColors.white),
                   ),
                 ),
                 const SizedBox(height: 25),

@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:jj_pcparts_proj/models/products.dart';
 
 import 'package:jj_pcparts_proj/models/shop.dart';
 import 'package:jj_pcparts_proj/models/orders.dart' as Orders;
 import 'package:jj_pcparts_proj/utils/constants/colors.dart';
+import 'package:jj_pcparts_proj/utils/constants/sizes.dart';
 import 'package:provider/provider.dart';
 
 class CustomerOrder extends StatefulWidget {
@@ -41,6 +43,7 @@ class _CustomerOrderState extends State<CustomerOrder> {
     return Consumer<Shop>(
       builder: (context, value, child) => Scaffold(
         appBar: AppBar(
+          backgroundColor: JJColors.white,
           title: const Text(
             'Go Back',
             style: TextStyle(fontSize: 15),
@@ -58,8 +61,11 @@ class _CustomerOrderState extends State<CustomerOrder> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                const SizedBox(
+                  height: JJSizes.spaceBtwSections,
+                ),
                 const Text(
-                  'CUSTOMER ORDER DETAILS',
+                  'Order Details',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 25),
@@ -141,7 +147,7 @@ class _CustomerOrderState extends State<CustomerOrder> {
                           ),
                           title: Text("${product.pname} x $quantity"),
                           subtitle: Text(
-                            "Price: PHP ${double.parse(product.pprice).toStringAsFixed(2)}",
+                            "Price: ₱ ${double.parse(product.pprice).toStringAsFixed(2)}",
                             style: const TextStyle(fontWeight: FontWeight.bold),
                           ),
                         );
@@ -165,9 +171,9 @@ class _CustomerOrderState extends State<CustomerOrder> {
                       createOrder(value);
                     },
                     child: const Text(
-                      'PURCHASE',
+                      'Purchase',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: JJColors.white,
                       ),
                     ),
                   ),

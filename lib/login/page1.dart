@@ -36,7 +36,7 @@ class _Page1State extends State<Page1> {
               onPressed: () {
                 FirebaseAuth.instance.signOut();
               },
-              child: const Text('SIGN OUT'),
+              child: const Text('Sign Out'),
             )
           ],
         ),

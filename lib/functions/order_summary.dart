@@ -1,6 +1,7 @@
 // OrderSummaryPage.dart
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:intl/intl.dart';
 import 'complete_order.dart';
 
 class OrderSummaryPage extends StatefulWidget {
@@ -125,7 +126,7 @@ class _OrderSummaryPageState extends State<OrderSummaryPage> {
               if (order?['totalprice'] != null)
                 Center(
                   child: Text(
-                    'Total Amount: PHP ${order?['totalprice']}',
+                    'Total Amount: ₱ ${order?['totalprice']}',
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -151,7 +152,7 @@ class _OrderSummaryPageState extends State<OrderSummaryPage> {
         return AlertDialog(
           title: const Center(
             child: Text(
-              'Complete Order!',
+              'Order Completed!',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             ),
           ),
@@ -173,7 +174,8 @@ class OrderSummaryList extends StatelessWidget {
   final void Function(QueryDocumentSnapshot?) onMoveToCheck;
   final void Function(QueryDocumentSnapshot?) showDetailsDialog;
 
-  const OrderSummaryList({super.key, 
+  const OrderSummaryList({
+    super.key,
     required this.onCompleteOrder,
     required this.onMoveToCheck,
     required this.showDetailsDialog,

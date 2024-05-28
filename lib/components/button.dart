@@ -12,7 +12,7 @@ class MyButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: JJColors.buttonSecondary,
+          color: JJColors.black,
           borderRadius: BorderRadius.circular(13),
         ),
         padding: const EdgeInsets.all(20),
@@ -21,14 +21,14 @@ class MyButton extends StatelessWidget {
           children: [
             Text(
               text,
-              style: const TextStyle(color: Colors.white),
+              style: const TextStyle(color: JJColors.white),
             ),
             const SizedBox(
               width: 10,
             ),
             const Icon(
               Icons.arrow_forward,
-              color: Colors.white,
+              color: JJColors.white,
             ),
           ],
         ),

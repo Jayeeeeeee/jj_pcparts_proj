@@ -9,7 +9,7 @@ class JJColors {
   // Text colors
   static const Color textPrimary = Color(0xFF333333);
   static const Color textSecondary = Color(0xFF6C757D);
-  static const Color textWhite = Colors.white;
+  static const Color textWhite = JJColors.white;
 
   // Background colors
   static const Color light = Color(0xFFF6F6F6);
@@ -34,6 +34,7 @@ class JJColors {
   static const Color success = Color(0xFF388E3C);
   static const Color warning = Color(0xFFF57C00);
   static const Color info = Color(0xFF1976D2);
+  static const Color rating = Colors.yellow;
 
   // Neutral Shades
   static const Color black = Color(0xFF232323);

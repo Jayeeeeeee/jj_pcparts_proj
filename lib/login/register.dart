@@ -100,8 +100,8 @@ class _RegisterState extends State<Register> {
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   minimumSize: const Size.fromHeight(50),
-                  backgroundColor: JJColors
-                      .primaryBackground, // Set the button color to purple
+                  backgroundColor:
+                      JJColors.primary, // Set the button color to purple
                 ),
                 onPressed: () {
                   if (areFieldsFilled()) {
@@ -113,7 +113,7 @@ class _RegisterState extends State<Register> {
                 },
                 child: const Text(
                   'Register',
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: JJColors.white),
                 ),
               ),
               const SizedBox(height: 15),

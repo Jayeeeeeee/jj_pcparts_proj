@@ -119,11 +119,11 @@ class _UpdateProductState extends State<UpdateProduct> {
                     onPressed: _pickImage,
                     icon: const Icon(
                       Icons.camera_alt,
-                      color: Colors.white,
+                      color: JJColors.white,
                     ),
                     label: const Text(
                       'Update Image',
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: JJColors.white),
                     ),
                     style: ElevatedButton.styleFrom(
                         backgroundColor: JJColors.primary),
@@ -197,9 +197,9 @@ class _UpdateProductState extends State<UpdateProduct> {
                       setState(() {});
                     },
                     child: const Text(
-                      'UPDATE',
+                      'Update',
                       style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
+                          color: JJColors.white, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
