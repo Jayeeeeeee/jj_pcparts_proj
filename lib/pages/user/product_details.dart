@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:jj_pcparts_proj/components/button.dart';
 import 'package:jj_pcparts_proj/models/products.dart';
 import 'package:jj_pcparts_proj/models/shop.dart';

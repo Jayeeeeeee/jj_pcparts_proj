@@ -189,13 +189,13 @@ class _CustomerViewState extends State<CustomerView> {
                   controller: _searchController,
                   decoration: InputDecoration(
                     hintText: 'Search Product',
-                    hintStyle: const TextStyle(color: JJColors.darkerGrey),
+                    hintStyle: const TextStyle(color: JJColors.white),
                     border: OutlineInputBorder(
                       borderSide: const BorderSide(width: 2.0),
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                     filled: true,
-                    fillColor: Colors.grey[200],
+                    fillColor: JJColors.black,
                     suffixIcon: IconButton(
                       onPressed: () {
                         setState(() {});
@@ -277,49 +277,87 @@ class _CustomerViewState extends State<CustomerView> {
             final products = snapshot.data;
 
             final filteredProducts = products
-                ?.where((p) =>
-                    p.pname.toLowerCase().contains(_searchController.text))
+                ?.where((p) => p.pname.contains(_searchController.text))
                 .toList();
 
             return Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    buildCategory("Peripherals", Icons.keyboard, () {
-                      final peripherals = filteredProducts
-                          ?.where(
-                              (product) => product.pcategory == 'Peripherals')
-                          .toList();
-                      navigateToCategoryPage(peripherals!);
-                    }),
-                    buildCategory("Monitor", Icons.monitor_rounded, () {
-                      final monitor = filteredProducts
-                          ?.where((product) => product.pcategory == 'Monitor')
-                          .toList();
-                      navigateToCategoryPage(monitor!);
-                    }),
-                    buildCategory("PC Case", Icons.devices_other, () {
-                      final pcCase = filteredProducts
-                          ?.where((product) => product.pcategory == 'PC Case')
-                          .toList();
-                      navigateToCategoryPage(pcCase!);
-                    }),
-                    buildCategory("Graphics Card", Icons.graphic_eq, () {
-                      final gpu = filteredProducts
-                          ?.where(
-                              (product) => product.pcategory == 'Graphics Card')
-                          .toList();
-                      navigateToCategoryPage(gpu!);
-                    }),
-                    buildCategory("Power Supply Unit", Icons.power, () {
-                      final psu = filteredProducts
-                          ?.where((product) =>
-                              product.pcategory == 'Power Supply Unit')
-                          .toList();
-                      navigateToCategoryPage(psu!);
-                    }),
-                  ],
+                SingleChildScrollView(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      //GPU
+                      buildCategory("Graphics Card", Icons.graphic_eq, () {
+                        final gpu = filteredProducts
+                            ?.where((product) =>
+                                product.pcategory == 'Graphics Card')
+                            .toList();
+                        navigateToCategoryPage(gpu!);
+                      }),
+
+                      //Monitor
+                      buildCategory("Monitor", Icons.monitor_rounded, () {
+                        final monitor = filteredProducts
+                            ?.where((product) => product.pcategory == 'Monitor')
+                            .toList();
+                        navigateToCategoryPage(monitor!);
+                      }),
+
+                      //Motherboard
+                      buildCategory("Motherboard", Icons.developer_board, () {
+                        final mobo = filteredProducts
+                            ?.where(
+                                (product) => product.pcategory == 'Motherboard')
+                            .toList();
+                        navigateToCategoryPage(mobo!);
+                      }),
+
+                      //PC Case
+                      buildCategory("PC Case", Icons.computer, () {
+                        final pcCase = filteredProducts
+                            ?.where((product) => product.pcategory == 'PC Case')
+                            .toList();
+                        navigateToCategoryPage(pcCase!);
+                      }),
+
+                      //Peripherals
+                      buildCategory("Peripherals", Icons.keyboard, () {
+                        final peripherals = filteredProducts
+                            ?.where(
+                                (product) => product.pcategory == 'Peripherals')
+                            .toList();
+                        navigateToCategoryPage(peripherals!);
+                      }),
+
+                      //Processors
+                      buildCategory("Processors", Icons.memory, () {
+                        final cpu = filteredProducts
+                            ?.where(
+                                (product) => product.pcategory == 'Processors')
+                            .toList();
+                        navigateToCategoryPage(cpu!);
+                      }),
+
+                      //Power Supply
+                      buildCategory("Power Supply Unit", Icons.power, () {
+                        final psu = filteredProducts
+                            ?.where((product) =>
+                                product.pcategory == 'Power Supply')
+                            .toList();
+                        navigateToCategoryPage(psu!);
+                      }),
+
+                      //Storage
+                      buildCategory("Storage", Icons.storage, () {
+                        final storage = filteredProducts
+                            ?.where((product) => product.pcategory == 'Storage')
+                            .toList();
+                        navigateToCategoryPage(storage!);
+                      }),
+
+                      //RAM
+                    ],
+                  ),
                 ),
                 Expanded(
                   child: Container(
