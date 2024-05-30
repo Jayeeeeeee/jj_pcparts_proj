@@ -201,7 +201,7 @@ class _CustomerViewState extends State<CustomerView> {
                         setState(() {});
                       },
                       icon: const Icon(Icons.search),
-                      color: Colors.grey[800],
+                      color: JJColors.white,
                     ),
                   ),
                   onChanged: (value) {

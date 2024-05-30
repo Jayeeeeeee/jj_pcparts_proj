@@ -12,14 +12,10 @@ class _AuthenticatorState extends State<Authenticator> {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            // Remove the loading circle
-            // return const Center(
-            //   child: CircularProgressIndicator(),
-            // );
-            return Container(); // Empty container for placeholder
+            return Container();
           } else if (snapshot.hasError) {
             return const Center(
-              child: Text('Something wrong'),
+              child: Text('Something went wrong.'),
             );
           } else if (snapshot.hasData) {
             return const CustomerView();
