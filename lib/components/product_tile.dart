@@ -52,7 +52,7 @@ class ProductTile extends StatelessWidget {
                       color: JJColors.rating,
                     ),
                     Text(product.rating,
-                        style: const TextStyle(color: Colors.grey))
+                        style: const TextStyle(color: JJColors.grey))
                   ],
                 ))
           ],

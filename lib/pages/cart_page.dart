@@ -24,18 +24,18 @@ class CartPage extends StatelessWidget {
         builder: (context, value, child) => Scaffold(
               backgroundColor: const Color(0x00f7f7f7),
               appBar: AppBar(
-                foregroundColor: Colors.black,
+                foregroundColor: JJColors.black,
                 title: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.shopping_cart, color: Colors.black),
+                    Icon(Icons.shopping_cart, color: JJColors.black),
                     SizedBox(
                       width: 10,
                     ),
                     Padding(
                       padding: EdgeInsets.only(right: 50),
                       child: Text("My Cart",
-                          style: TextStyle(color: Colors.black)),
+                          style: TextStyle(color: JJColors.black)),
                     ),
                   ],
                 ),
@@ -49,14 +49,14 @@ class CartPage extends StatelessWidget {
                     child: ListView.builder(
                       itemCount: value.cart.length,
                       itemBuilder: (context, index) {
-                        // get pants from the cart
+                        // get products from the cart
                         final Product product = value.cart[index];
-                        // get pants name
+                        // get product name
                         final String productName = product.pname;
-                        // get pants price
+                        // get product price
                         final String productPrice = product.pprice;
 
-                        // return list stile
+                        // return list tile
                         return Container(
                           decoration: BoxDecoration(
                             color: JJColors.lightContainer,
